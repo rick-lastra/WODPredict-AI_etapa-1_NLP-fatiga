@@ -1,5 +1,23 @@
 # 🏋️ WODPredict-AI: Detección de Fatiga en Atletas usando NLP
 
+> ## 🧭 Project context · WODPredict-AI Master's Capstone (stage 1 of 4)
+>
+> **Capstone journey:** [Activity 4 · NLP fatigue signal](https://github.com/rick-lastra/WODPredictAI) → [Activity 5 · data & training](https://github.com/rick-lastra/Actividad_5) → [Activity 6 · evaluation & threshold](https://github.com/rick-lastra/Actividad_6) → **[WODPredict-AI Fase II · deployed API](https://github.com/rick-lastra/WODPredict-AI-FaseII)** *(main repository)*
+>
+> | | |
+> |---|---|
+> | **Purpose** | Which pretrained Hugging Face sentiment model best detects fatigue / overtraining signals (`NEG`) in athlete comments written in Spanish and English? Three models were compared on 84 coach-labelled comments. |
+> | **Relationship to WODPredict-AI Fase II** | The selected model (`cardiffnlp/twitter-xlm-roberta-base-sentiment`, recall NEG 1.00, F1 macro 0.713) produces `prob_fatiga`, which became two input features of the final overload model (`prob_fatiga_prev_session`, `prob_fatiga_last_note`). The Fase II API receives these as precomputed inputs; the NLP model itself is **not** served there (planned next step). |
+> | **Status** | `exploratory` · `superseded by WODPredict-AI Fase II`. Kept as a read-only reference; no further development. |
+> | **Main repository** | [rick-lastra/WODPredict-AI-FaseII](https://github.com/rick-lastra/WODPredict-AI-FaseII) |
+>
+> **Please note**
+> - **Data:** `data/raw/workouts_sugarwod.csv` is an unmodified SugarWOD export: the **author's own personal training log** (792 records, 2022–2025), published with his consent. The 84 comments in `data/notas_etiquetadas_coach.csv` used for evaluation were drafted with AI assistance and validated by one coach; they are **not** real athlete notes.
+> - **Superseded material:** `data/workouts.csv` is the first-delivery version, kept only for traceability. Its keyword-based labels produced 0 `NEG` cases, so the first-delivery F1 of 0.859 is **not valid** (and is unrelated to the 0.859 ROC-AUC of the final model).
+> - **Experimental:** the notebook is a proof of concept. No model reaches the F1 macro 0.80 target, test set is small (42 comments) and there is a single annotator, so figures are indicative only.
+> - *The rest of this README is in Spanish.*
+
+
 ## Título y Descripción
 **Nombre del proyecto:** WODPredict-AI (Módulo Análisis de Sentimientos)
 Este repositorio contiene la prueba de concepto para integrar Inteligencia Artificial en la red de centros **UnderCover Fitness**. A través del ecosistema de Hugging Face, se utilizan técnicas de Procesamiento de Lenguaje Natural (NLP) para analizar los comentarios de los atletas tras sus entrenamientos (WODs) y detectar riesgos de sobreentrenamiento o fatiga aguda.
@@ -14,7 +32,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 | Componente | Uso en el proyecto |
 |---|---|
 | **Models** | Los 3 modelos evaluados se descargan del Hub con `transformers.pipeline` |
-| **Datasets** | Los dos conjuntos se publican como datasets privados y se cargan con `datasets.load_dataset`: la exportación de SugarWOD (`rick-lastra/wodpredict-sugarwod-raw`) y el conjunto etiquetado por el coach (`rick-lastra/wodpredict-notas-coach`). Si no hay acceso, se leen los CSV del repositorio |
+| **Datasets** | Los dos conjuntos se publican como datasets privados en Hugging Face (el CSV de SugarWOD, además, está en este repositorio público por ser registro personal del autor) y se cargan con `datasets.load_dataset`: la exportación de SugarWOD (`rick-lastra/wodpredict-sugarwod-raw`) y el conjunto etiquetado por el coach (`rick-lastra/wodpredict-notas-coach`). Si no hay acceso, se leen los CSV del repositorio |
 | **Spaces** | Despliegue futuro: demo en Gradio para que el coach pegue un comentario y vea la clase y `prob_fatiga` |
 
 ## 🛠️ Tecnologías Utilizadas
@@ -27,7 +45,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
     * `lxyuan/distilbert-base-multilingual-cased-sentiments-student`
 
 ## 📁 Estructura del Proyecto
-*   `data/raw/workouts_sugarwod.csv`: exportación original de SugarWOD (792 filas, 143 con nota).
+*   `data/raw/workouts_sugarwod.csv`: exportación original de SugarWOD, registro personal de entrenamiento del autor, publicado con su consentimiento (792 filas, 143 con nota).
 *   `data/notas_etiquetadas_coach.csv`: 84 comentarios con etiqueta validada por un coach CF-L1/L2 (ground truth).
 *   `data/workouts.csv`: versión usada en la primera entrega (se conserva por trazabilidad).
 *   `data/README.md`: ficha de origen, etiquetado y limitaciones de los datos.
@@ -86,7 +104,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 *   La exportación de SugarWOD no trae RPE ni cargas para calcular ACWR.
 
 ## 🔗 Enlaces
-*   Dataset SugarWOD (privado): https://huggingface.co/datasets/rick-lastra/wodpredict-sugarwod-raw
+*   Dataset SugarWOD (privado en Hugging Face; el mismo CSV está público en `data/raw/`): https://huggingface.co/datasets/rick-lastra/wodpredict-sugarwod-raw
 *   Dataset etiquetado por el coach (privado): https://huggingface.co/datasets/rick-lastra/wodpredict-notas-coach
 *   Notebook en Google Colab: https://colab.research.google.com/github/rick-lastra/WODPredictAI/blob/main/notebooks/Actividad_4.ipynb
 

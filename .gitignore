@@ -1,0 +1,14 @@
+# Entornos virtuales y archivos de Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Credenciales y configuración local: nunca se suben (el token de Hugging Face va en HF_TOKEN)
+.env
+*.env
+
+# Archivos del sistema
+.DS_Store
+*Zone.Identifier
