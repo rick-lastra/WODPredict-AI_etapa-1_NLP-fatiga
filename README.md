@@ -2,14 +2,14 @@
 
 > ## 🧭 Project context · WODPredict-AI Master's Capstone (stage 1 of 4)
 >
-> **Capstone journey:** [Activity 4 · NLP fatigue signal](https://github.com/rick-lastra/WODPredictAI) → [Activity 5 · data & training](https://github.com/rick-lastra/Actividad_5) → [Activity 6 · evaluation & threshold](https://github.com/rick-lastra/Actividad_6) → **[WODPredict-AI Fase II · deployed API](https://github.com/rick-lastra/WODPredict-AI-FaseII)** *(main repository)*
+> **Capstone journey:** [Stage 1 · NLP fatigue signal](https://github.com/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga) → [Stage 2 · data & training](https://github.com/rick-lastra/WODPredict-AI_etapa-2_preparacion-datos) → [Stage 3 · evaluation & threshold](https://github.com/rick-lastra/WODPredict-AI_etapa-3_evaluacion-modelo) → **[WODPredict-AI Fase II · deployed API](https://github.com/rick-lastra/WODPredict-AI_etapa-4_API-despliegue)** *(main repository)*
 >
 > | | |
 > |---|---|
 > | **Purpose** | Which pretrained Hugging Face sentiment model best detects fatigue / overtraining signals (`NEG`) in athlete comments written in Spanish and English? Three models were compared on 84 coach-labelled comments. |
 > | **Relationship to WODPredict-AI Fase II** | The selected model (`cardiffnlp/twitter-xlm-roberta-base-sentiment`, recall NEG 1.00, F1 macro 0.713) produces `prob_fatiga`, which became two input features of the final overload model (`prob_fatiga_prev_session`, `prob_fatiga_last_note`). The Fase II API receives these as precomputed inputs; the NLP model itself is **not** served there (planned next step). |
 > | **Status** | `exploratory` · `superseded by WODPredict-AI Fase II`. Kept as a read-only reference; no further development. |
-> | **Main repository** | [rick-lastra/WODPredict-AI-FaseII](https://github.com/rick-lastra/WODPredict-AI-FaseII) |
+> | **Main repository** | [rick-lastra/WODPredict-AI_etapa-4_API-despliegue](https://github.com/rick-lastra/WODPredict-AI_etapa-4_API-despliegue) |
 >
 > **Please note**
 > - **Data:** `data/raw/workouts_sugarwod.csv` is an unmodified SugarWOD export: the **author's own personal training log** (792 records, 2022–2025), published with his consent. The 84 comments in `data/notas_etiquetadas_coach.csv` used for evaluation were drafted with AI assistance and validated by one coach; they are **not** real athlete notes.
@@ -37,7 +37,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 
 ## 🛠️ Tecnologías Utilizadas
 *   **Lenguaje:** Python 3.10+
-*   **Entorno:** Google Colab conectado a un entorno de ejecución local (GPU NVIDIA GeForce RTX 4050 Laptop en un contenedor Docker). Abre siempre la versión de `main`: https://colab.research.google.com/github/rick-lastra/WODPredictAI/blob/main/notebooks/Actividad_4.ipynb (también corre en CPU)
+*   **Entorno:** Google Colab conectado a un entorno de ejecución local (GPU NVIDIA GeForce RTX 4050 Laptop en un contenedor Docker). Abre siempre la versión de `main`: https://colab.research.google.com/github/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga/blob/main/notebooks/Actividad_4.ipynb (también corre en CPU)
 *   **Librerías principales:** `transformers`, `datasets`, `huggingface_hub`, `torch`, `scikit-learn`, `pandas`, `matplotlib`
 *   **Modelos evaluados (los tres de 3 clases: negativo, neutral y positivo):**
     * `pysentimiento/robertuito-sentiment-analysis`
@@ -61,8 +61,8 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 
 1. **Clonar el repositorio e instalar dependencias:**
    ```bash
-   git clone https://github.com/rick-lastra/WODPredictAI.git
-   cd WODPredictAI
+   git clone https://github.com/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga.git
+   cd WODPredict-AI_etapa-1_NLP-fatiga
    pip install -r requirements.txt
    ```
 2. **Ejecutar en local:** abre `notebooks/Actividad_4.ipynb` y ejecuta las celdas en orden. Las rutas son relativas al repositorio.
@@ -106,7 +106,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 ## 🔗 Enlaces
 *   Dataset SugarWOD (privado en Hugging Face; el mismo CSV está público en `data/raw/`): https://huggingface.co/datasets/rick-lastra/wodpredict-sugarwod-raw
 *   Dataset etiquetado por el coach (privado): https://huggingface.co/datasets/rick-lastra/wodpredict-notas-coach
-*   Notebook en Google Colab: https://colab.research.google.com/github/rick-lastra/WODPredictAI/blob/main/notebooks/Actividad_4.ipynb
+*   Notebook en Google Colab: https://colab.research.google.com/github/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga/blob/main/notebooks/Actividad_4.ipynb
 
 ## 👥 Contacto y Créditos
 *   **Autor:** Ricardo Alejandro Lastra Dueñas

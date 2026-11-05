@@ -16,7 +16,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 RAIZ = Path(__file__).resolve().parents[1]
-GITHUB_RAW = "https://raw.githubusercontent.com/rick-lastra/WODPredictAI/main"
+GITHUB_RAW = "https://raw.githubusercontent.com/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga/main"
 HF_DATASET_ID = "rick-lastra/wodpredict-notas-coach"
 HF_DATASET_RAW_ID = "rick-lastra/wodpredict-sugarwod-raw"
 
