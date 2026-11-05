@@ -1,4 +1,4 @@
-"""Publica los dos conjuntos de datos del proyecto como datasets en Hugging Face (se crean privados; luego se pueden hacer públicos desde la web).
+"""Publica los dos conjuntos de datos del proyecto como datasets en Hugging Face (públicos).
 
 - data/notas_etiquetadas_coach.csv  -> rick-lastra/wodpredict-notas-coach
 - data/raw/workouts_sugarwod.csv    -> rick-lastra/wodpredict-sugarwod-raw (todas las columnas como texto)
@@ -21,5 +21,5 @@ if __name__ == "__main__":
         (HF_DATASET_RAW_ID, pd.read_csv(RAIZ / RUTA_WORKOUTS_RAW, dtype=str, keep_default_na=False)),
     ]
     for repo_id, df in conjuntos:
-        Dataset.from_pandas(df, preserve_index=False).push_to_hub(repo_id, private=True, token=token)
-        print(f"Publicado: https://huggingface.co/datasets/{repo_id} ({len(df)} filas, privado)")
+        Dataset.from_pandas(df, preserve_index=False).push_to_hub(repo_id, private=False, token=token)
+        print(f"Publicado: https://huggingface.co/datasets/{repo_id} ({len(df)} filas, público)")

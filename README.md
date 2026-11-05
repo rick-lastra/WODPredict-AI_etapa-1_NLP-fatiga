@@ -52,7 +52,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 *   `src/datos.py`: carga (Hugging Face, local o GitHub), filtro de notas técnicas y split dev/test.
 *   `src/evaluar.py`: inferencia, umbral, métricas por clase, matriz de confusión y latencia.
 *   `src/integrar_tabular.py`: `prob_fatiga` + variables tabulares para el modelo de rendimiento.
-*   `src/publicar_dataset_hf.py`: publica los dos conjuntos como datasets en Hugging Face (requiere token de escritura; el script los crea privados y se hicieron públicos después desde Hugging Face).
+*   `src/publicar_dataset_hf.py`: publica los dos conjuntos como datasets en Hugging Face (requiere token de escritura; los crea públicos).
 *   `notebooks/Actividad_4.ipynb`: experimento completo con conclusiones parciales y generales.
 *   `resultados/`: matrices de confusión, comparativa, métricas en CSV y features tabulares.
 *   `requirements.txt`: dependencias para reproducir el entorno.
