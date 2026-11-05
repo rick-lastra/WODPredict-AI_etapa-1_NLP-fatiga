@@ -1,21 +1,20 @@
 # 🏋️ WODPredict-AI: Detección de Fatiga en Atletas usando NLP
 
-> ## 🧭 Project context · WODPredict-AI Master's Capstone (stage 1 of 4)
+> ## 🧭 Contexto del proyecto · Master's Capstone WODPredict-AI (etapa 1 de 4)
 >
-> **Capstone journey:** [Stage 1 · NLP fatigue signal](https://github.com/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga) → [Stage 2 · data & training](https://github.com/rick-lastra/WODPredict-AI_etapa-2_preparacion-datos) → [Stage 3 · evaluation & threshold](https://github.com/rick-lastra/WODPredict-AI_etapa-3_evaluacion-modelo) → **[WODPredict-AI Fase II · deployed API](https://github.com/rick-lastra/WODPredict-AI_etapa-4_API-despliegue)** *(main repository)*
+> **Ruta del capstone:** [Etapa 1 · señal NLP de fatiga](https://github.com/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga) → [Etapa 2 · datos y entrenamiento](https://github.com/rick-lastra/WODPredict-AI_etapa-2_preparacion-datos) → [Etapa 3 · evaluación y umbral](https://github.com/rick-lastra/WODPredict-AI_etapa-3_evaluacion-modelo) → **[Etapa 4 · API desplegada (WODPredict-AI Fase II)](https://github.com/rick-lastra/WODPredict-AI_etapa-4_API-despliegue)** *(repositorio principal)*
 >
 > | | |
 > |---|---|
-> | **Purpose** | Which pretrained Hugging Face sentiment model best detects fatigue / overtraining signals (`NEG`) in athlete comments written in Spanish and English? Three models were compared on 84 coach-labelled comments. |
-> | **Relationship to WODPredict-AI Fase II** | The selected model (`cardiffnlp/twitter-xlm-roberta-base-sentiment`, recall NEG 1.00, F1 macro 0.713) produces `prob_fatiga`, which became two input features of the final overload model (`prob_fatiga_prev_session`, `prob_fatiga_last_note`). The Fase II API receives these as precomputed inputs; the NLP model itself is **not** served there (planned next step). |
-> | **Status** | `exploratory` · `superseded by WODPredict-AI Fase II`. Kept as a read-only reference; no further development. |
-> | **Main repository** | [rick-lastra/WODPredict-AI_etapa-4_API-despliegue](https://github.com/rick-lastra/WODPredict-AI_etapa-4_API-despliegue) |
+> | **Propósito** | ¿Qué modelo preentrenado de sentimiento de Hugging Face detecta mejor las señales de fatiga o sobreentrenamiento (`NEG`) en comentarios de atletas escritos en español e inglés? Se compararon tres modelos con 84 comentarios etiquetados por el coach. |
+> | **Relación con WODPredict-AI Fase II** | El modelo seleccionado (`cardiffnlp/twitter-xlm-roberta-base-sentiment`, recall NEG 1.00, F1 macro 0.713) produce `prob_fatiga`, que se convirtió en dos variables de entrada del modelo final de sobrecarga (`prob_fatiga_prev_session`, `prob_fatiga_last_note`). La API de la Fase II las recibe ya calculadas; el modelo NLP en sí **no** se sirve allí (siguiente paso planeado). |
+> | **Estado** | `exploratorio` · `reemplazado por WODPredict-AI Fase II`. Se conserva como referencia de solo lectura; sin desarrollo adicional. |
+> | **Repositorio principal** | [rick-lastra/WODPredict-AI_etapa-4_API-despliegue](https://github.com/rick-lastra/WODPredict-AI_etapa-4_API-despliegue) |
 >
-> **Please note**
-> - **Data:** `data/raw/workouts_sugarwod.csv` is an unmodified SugarWOD export: the **author's own personal training log** (792 records, 2022–2025), published with his consent. The 84 comments in `data/notas_etiquetadas_coach.csv` used for evaluation were drafted with AI assistance and validated by one coach; they are **not** real athlete notes.
-> - **Superseded material:** `data/workouts.csv` is the first-delivery version, kept only for traceability. Its keyword-based labels produced 0 `NEG` cases, so the first-delivery F1 of 0.859 is **not valid** (and is unrelated to the 0.859 ROC-AUC of the final model).
-> - **Experimental:** the notebook is a proof of concept. No model reaches the F1 macro 0.80 target, test set is small (42 comments) and there is a single annotator, so figures are indicative only.
-> - *The rest of this README is in Spanish.*
+> **Notas importantes**
+> - **Datos:** `data/raw/workouts_sugarwod.csv` es una exportación sin modificar de SugarWOD: el **registro personal de entrenamiento del autor** (792 registros, 2022–2025), publicado con su consentimiento. Los 84 comentarios de `data/notas_etiquetadas_coach.csv` usados para la evaluación fueron redactados con ayuda de IA y validados por un coach; **no** son notas reales de atletas.
+> - **Material reemplazado:** `data/workouts.csv` es la versión de la primera entrega y se conserva solo por trazabilidad. Sus etiquetas basadas en palabras clave produjeron 0 casos `NEG`, por lo que el F1 de 0.859 de la primera entrega **no es válido** (y no tiene relación con el ROC-AUC de 0.859 del modelo final).
+> - **Experimental:** el notebook es una prueba de concepto. Ningún modelo alcanza la meta de F1 macro 0.80, el conjunto de prueba es pequeño (42 comentarios) y hay un solo anotador, por lo que las cifras son solo indicativas.
 
 
 ## Título y Descripción
@@ -107,6 +106,10 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 *   Dataset SugarWOD (público en Hugging Face; el mismo CSV está en `data/raw/`): https://huggingface.co/datasets/rick-lastra/wodpredict-sugarwod-raw
 *   Dataset etiquetado por el coach (público): https://huggingface.co/datasets/rick-lastra/wodpredict-notas-coach
 *   Notebook en Google Colab: https://colab.research.google.com/github/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga/blob/main/notebooks/Actividad_4.ipynb
+
+*   Etapa 2 (siguiente etapa, datos y entrenamiento con MLflow): https://github.com/rick-lastra/WODPredict-AI_etapa-2_preparacion-datos
+*   Etapa 3 (evaluación, validación y umbral): https://github.com/rick-lastra/WODPredict-AI_etapa-3_evaluacion-modelo
+*   Etapa 4 (repositorio principal, API desplegada · WODPredict-AI Fase II): https://github.com/rick-lastra/WODPredict-AI_etapa-4_API-despliegue
 
 ## 👥 Contacto y Créditos
 *   **Autor:** Ricardo Alejandro Lastra Dueñas
