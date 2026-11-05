@@ -1,4 +1,4 @@
-"""Publica los dos conjuntos de datos del proyecto como datasets privados en Hugging Face.
+"""Publica los dos conjuntos de datos del proyecto como datasets en Hugging Face (se crean privados; luego se pueden hacer públicos desde la web).
 
 - data/notas_etiquetadas_coach.csv  -> rick-lastra/wodpredict-notas-coach
 - data/raw/workouts_sugarwod.csv    -> rick-lastra/wodpredict-sugarwod-raw (todas las columnas como texto)

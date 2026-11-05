@@ -1,7 +1,7 @@
 """Carga y limpieza de datos para WODPredict-AI.
 
 Fuentes, en orden de preferencia:
-1. Hugging Face Datasets (dataset privado del proyecto), si hay token con acceso.
+1. Hugging Face Datasets (datasets públicos del proyecto), si hay conexión.
 2. Copia local del repositorio (cuando se trabaja desde un clon).
 3. URL raw de GitHub (Colab sin clonar el repositorio).
 """

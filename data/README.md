@@ -2,9 +2,9 @@
 
 | Archivo | Qué contiene | Filas |
 |---|---|---|
-| `raw/workouts_sugarwod.csv` | Exportación original de SugarWOD: registro personal de entrenamiento del autor, publicado con su consentimiento (30/10/2022 a 22/04/2025), sin modificaciones. Está en este repositorio público y también en el dataset privado `rick-lastra/wodpredict-sugarwod-raw` | 792 registros (componentes de WOD en 248 días de entrenamiento), 143 con nota |
+| `raw/workouts_sugarwod.csv` | Exportación original de SugarWOD: registro personal de entrenamiento del autor, publicado con su consentimiento (30/10/2022 a 22/04/2025), sin modificaciones. Está en este repositorio público y también en el dataset público `rick-lastra/wodpredict-sugarwod-raw` | 792 registros (componentes de WOD en 248 días de entrenamiento), 143 con nota |
 | `workouts.csv` | Versión usada en la primera entrega (3 títulos acortados y tiempos con otro formato). Se conserva por trazabilidad | 792 |
-| `notas_etiquetadas_coach.csv` | Muestra experimental para evaluar los modelos (ground truth; también en el dataset privado `rick-lastra/wodpredict-notas-coach`) | 84 comentarios |
+| `notas_etiquetadas_coach.csv` | Muestra experimental para evaluar los modelos (ground truth; también en el dataset público `rick-lastra/wodpredict-notas-coach`) | 84 comentarios |
 
 ## Por qué hay un conjunto etiquetado aparte
 

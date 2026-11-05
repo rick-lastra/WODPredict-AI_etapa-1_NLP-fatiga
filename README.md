@@ -32,7 +32,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 | Componente | Uso en el proyecto |
 |---|---|
 | **Models** | Los 3 modelos evaluados se descargan del Hub con `transformers.pipeline` |
-| **Datasets** | Los dos conjuntos se publican como datasets privados en Hugging Face (el CSV de SugarWOD, además, está en este repositorio público por ser registro personal del autor) y se cargan con `datasets.load_dataset`: la exportación de SugarWOD (`rick-lastra/wodpredict-sugarwod-raw`) y el conjunto etiquetado por el coach (`rick-lastra/wodpredict-notas-coach`). Si no hay acceso, se leen los CSV del repositorio |
+| **Datasets** | Los dos conjuntos están publicados como datasets públicos en Hugging Face (el CSV de SugarWOD, además, está en este repositorio por ser registro personal del autor) y se cargan con `datasets.load_dataset`: la exportación de SugarWOD (`rick-lastra/wodpredict-sugarwod-raw`) y el conjunto etiquetado por el coach (`rick-lastra/wodpredict-notas-coach`). Si no hay acceso o conexión, se leen los CSV del repositorio |
 | **Spaces** | Despliegue futuro: demo en Gradio para que el coach pegue un comentario y vea la clase y `prob_fatiga` |
 
 ## 🛠️ Tecnologías Utilizadas
@@ -52,7 +52,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 *   `src/datos.py`: carga (Hugging Face, local o GitHub), filtro de notas técnicas y split dev/test.
 *   `src/evaluar.py`: inferencia, umbral, métricas por clase, matriz de confusión y latencia.
 *   `src/integrar_tabular.py`: `prob_fatiga` + variables tabulares para el modelo de rendimiento.
-*   `src/publicar_dataset_hf.py`: publica los dos conjuntos como datasets privados en Hugging Face (requiere token de escritura).
+*   `src/publicar_dataset_hf.py`: publica los dos conjuntos como datasets en Hugging Face (requiere token de escritura; el script los crea privados y se hicieron públicos después desde Hugging Face).
 *   `notebooks/Actividad_4.ipynb`: experimento completo con conclusiones parciales y generales.
 *   `resultados/`: matrices de confusión, comparativa, métricas en CSV y features tabulares.
 *   `requirements.txt`: dependencias para reproducir el entorno.
@@ -67,7 +67,7 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
    ```
 2. **Ejecutar en local:** abre `notebooks/Actividad_4.ipynb` y ejecuta las celdas en orden. Las rutas son relativas al repositorio.
 3. **Ejecutar en Google Colab:** abre el notebook en Colab y ejecuta las celdas en orden. La celda del punto 2 clona el repositorio (requirements, scripts de `src/` y CSV de respaldo) e instala las dependencias; no hay que subir archivos a mano. Esta entrega se ejecutó con Colab conectado a un entorno de ejecución local (GPU RTX 4050 en un contenedor Docker); también funciona con una GPU hospedada de Colab o en CPU.
-4. **Datasets privados en Hugging Face (opcional):** guarda tu token como secreto `HF_TOKEN` en Colab (o como variable de entorno). Sin token, el notebook usa los CSV del repositorio.
+4. **Datasets en Hugging Face (opcional):** guarda tu token como secreto `HF_TOKEN` en Colab (o como variable de entorno). Sin token, el notebook usa los CSV del repositorio.
 
 ## 🧪 Metodología de evaluación
 *   **Ground truth:** las notas reales de la exportación son técnicas (pesos, repeticiones, devocionales) y no describen fatiga. En la primera entrega las etiquetas salían de palabras clave y la muestra quedó con 0 casos NEG. Ahora se usan 84 comentarios en español e inglés, etiquetados por el coach (30 NEG, 26 NEU, 28 POS). Detalle en `data/README.md`.
@@ -104,8 +104,8 @@ Iniciativa alineada al *Business Case* de UnderCover Fitness para reducir la des
 *   La exportación de SugarWOD no trae RPE ni cargas para calcular ACWR.
 
 ## 🔗 Enlaces
-*   Dataset SugarWOD (privado en Hugging Face; el mismo CSV está público en `data/raw/`): https://huggingface.co/datasets/rick-lastra/wodpredict-sugarwod-raw
-*   Dataset etiquetado por el coach (privado): https://huggingface.co/datasets/rick-lastra/wodpredict-notas-coach
+*   Dataset SugarWOD (público en Hugging Face; el mismo CSV está en `data/raw/`): https://huggingface.co/datasets/rick-lastra/wodpredict-sugarwod-raw
+*   Dataset etiquetado por el coach (público): https://huggingface.co/datasets/rick-lastra/wodpredict-notas-coach
 *   Notebook en Google Colab: https://colab.research.google.com/github/rick-lastra/WODPredict-AI_etapa-1_NLP-fatiga/blob/main/notebooks/Actividad_4.ipynb
 
 ## 👥 Contacto y Créditos
